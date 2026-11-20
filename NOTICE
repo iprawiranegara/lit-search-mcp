@@ -1,0 +1,25 @@
+lit-search-mcp
+Copyright 2026 Izzu Prawiranegara
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+lit-search-mcp is a router. It does not contain or modify the literature search
+servers it routes to. Those servers are separate works by cyanheads (Casey Hand),
+each licensed under the Apache License, Version 2.0, and are installed from npm
+as dependencies:
+
+  @cyanheads/openalex-mcp-server          https://github.com/cyanheads/openalex-mcp-server
+  @cyanheads/arxiv-mcp-server             https://github.com/cyanheads/arxiv-mcp-server
+  @cyanheads/pubmed-mcp-server            https://github.com/cyanheads/pubmed-mcp-server
+  @cyanheads/crossref-mcp-server          https://github.com/cyanheads/crossref-mcp-server
+  @cyanheads/gutenberg-mcp-server         https://github.com/cyanheads/gutenberg-mcp-server
+  @cyanheads/openlibrary-mcp-server       https://github.com/cyanheads/openlibrary-mcp-server
+  @cyanheads/internet-archive-mcp-server  https://github.com/cyanheads/internet-archive-mcp-server
+
+Copyright 2026 cyanheads. Each package carries its own LICENSE file.
+
+lit-search-mcp also uses the MCP TypeScript SDK (@modelcontextprotocol/sdk),
+licensed under the MIT License.
+
+lit-search-mcp is an independent project. It is not affiliated with, endorsed
+by, or maintained by cyanheads.

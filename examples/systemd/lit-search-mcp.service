@@ -1,0 +1,26 @@
+# systemd user unit for the whole lit-search-mcp stack (router + seven upstreams).
+#
+# Install:
+#   1. Adjust ExecStart: the node binary (Node 24+) and the path to bin/lit-search-stack.mjs
+#      (for a global npm install: "$(npm root -g)/lit-search-mcp/bin/lit-search-stack.mjs").
+#   2. cp lit-search-mcp.service ~/.config/systemd/user/
+#   3. systemctl --user daemon-reload && systemctl --user enable --now lit-search-mcp.service
+#   4. Optional, to keep it running after logout: loginctl enable-linger "$USER"
+#   5. Check: curl http://127.0.0.1:28502/health
+#
+# Optional settings go in ~/.config/lit-search-mcp/env (see examples/env.example).
+
+[Unit]
+Description=lit-search-mcp stack (router + seven cyanheads literature MCP servers)
+After=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=-%h/.config/lit-search-mcp/env
+ExecStart=/usr/bin/node /path/to/lit-search-mcp/bin/lit-search-stack.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

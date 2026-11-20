@@ -1,0 +1,39 @@
+{
+  "name": "lit-search-mcp",
+  "version": "0.2.0",
+  "description": "One MCP endpoint for literature search across OpenAlex, arXiv, PubMed, Crossref, Project Gutenberg, Open Library and Internet Archive, routed to the cyanheads MCP servers.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Izzu Prawiranegara",
+  "keywords": ["mcp", "model-context-protocol", "literature-search", "openalex", "arxiv", "pubmed", "crossref"],
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "main": "index.mjs",
+  "bin": {
+    "lit-search-mcp": "index.mjs",
+    "lit-search-stack": "bin/lit-search-stack.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "lib/",
+    "bin/",
+    "examples/",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node bin/lit-search-stack.mjs",
+    "start:router": "node index.mjs"
+  },
+  "dependencies": {
+    "@cyanheads/arxiv-mcp-server": "1.2.15",
+    "@cyanheads/crossref-mcp-server": "0.1.16",
+    "@cyanheads/gutenberg-mcp-server": "0.1.4",
+    "@cyanheads/internet-archive-mcp-server": "0.1.3",
+    "@cyanheads/openalex-mcp-server": "0.7.2",
+    "@cyanheads/openlibrary-mcp-server": "0.1.16",
+    "@cyanheads/pubmed-mcp-server": "2.9.7",
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  }
+}
