@@ -34,7 +34,9 @@ MCP client(s) ──> router :28502/mcp ──> openalex          :28495
                                     └─> internet-archive  :28501
 ```
 
-All MCP clients on the machine (Claude Code, Codex, OpenCode, Hermes and so on) share one running set. Nothing is started per client session, so memory use stays flat as you add clients. On the reference machine the eight processes take about 250 MiB RSS in total.
+All MCP clients on the machine (Claude Code, Codex, OpenCode, Hermes and so on) share one running set. Nothing is started per client session, so memory use stays flat as you add clients.
+
+The set is not small. Measured on Linux with Node 24, freshly started through `lit-search-stack`: each of the seven upstream servers takes about 150 MiB RSS, the router about 80 MiB and the launcher about 50 MiB, so about 1.2 GB in total, rising to about 1.3 GB after the first calls. On a laptop with little memory to spare, that is a real cost.
 
 The `lit-search-stack` command starts all eight, prefixes their log lines with the source name, and restarts any process that exits.
 
