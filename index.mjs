@@ -33,8 +33,11 @@ const SOURCES = {
     description: '100M+ works with citations, references, concepts, institutions. The richest citation graph.',
     search: (q, lim) => ['openalex_search_entities', { entity_type: 'works', query: q, per_page: lim }],
     getWork: (id) => ['openalex_search_entities', { entity_type: 'works', id }],
-    getReferences: (id) => ['openalex_get_citation_graph', { seed_id: id, direction: 'cites' }],
-    getCitations: (id) => ['openalex_get_citation_graph', { seed_id: id, direction: 'cited_by' }],
+    // `direction` follows OpenAlex's filter names, which read backwards in English:
+    // `cited_by` returns the works the seed cites (its references) and `cites` returns
+    // the works that cite the seed. See iprawiranegara/lit-search-mcp#1.
+    getReferences: (id) => ['openalex_get_citation_graph', { seed_id: id, direction: 'cited_by' }],
+    getCitations: (id) => ['openalex_get_citation_graph', { seed_id: id, direction: 'cites' }],
     getFullText: null,
   },
   arxiv: {
